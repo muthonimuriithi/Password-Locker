@@ -1,4 +1,5 @@
 from random import randint
+from user import User
 
 class Credentials:
      '''
@@ -33,12 +34,22 @@ def display_credentials(cls):
         return cls.credentials_list
 
 @classmethod
+def verify_user(cls,user_name, user_password):
+    active_user = " "
+    for user in User.users_list:
+        if(user.username == user_name and user.password == user_password):
+            active_user = user.username
+
+            return active_user
+
+
+@classmethod
 def search_credentials(cls, account_name):
     for credential in cls.credentials_list:
         if credential.account_name == account_name:
             return credential
 
-def genpassword(ln):
+def generate_password(ln):
     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!#-$*/=?@"
     password =" "
     for i in range(ln):
