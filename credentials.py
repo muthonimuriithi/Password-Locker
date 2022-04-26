@@ -48,6 +48,7 @@ def search_credentials(cls, account_name):
     for credential in cls.credentials_list:
         if credential.account_name == account_name:
             return credential
+            
 
 def generate_password(ln):
     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!#-$*/=?@"
