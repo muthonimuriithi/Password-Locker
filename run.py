@@ -33,6 +33,9 @@ def disp_credentials():
 def search_creds(name):
     Credentials.search_credentials(name)
 
+    def login(name,password):
+        Credentials.verify_user(name,password)
+
 
 
 def main():
@@ -62,6 +65,43 @@ def main():
                     password = Credentials.generate_password(8)
                 else:
                         print("Invalid. kindly use short codes")
+
+                        sv_user(create_user(user_name, password))
+
+        elif shortcode == "li":
+            print("Enter your login details")
+            user_name = input("user-name: ")
+            password = input("Password: ")
+
+            user = login(user_name, password)
+
+            if login == user:
+                print("Welcome {user_name}")
+
+            while True:
+                print("Use these short codes to navigate : cc- create new account dc- display credentials f- find credentials ex- exit")
+
+                shortcode = input().lower().strip()
+                if shortcode == "cc":
+                    print("Enter details to create new account")
+                    account_name = input("Account Name: ")
+                    u_name = input("Username: ")
+
+                    while True:
+                         print("Enter ip-to input password\n gp- to generate password ")
+                         pass_choice = input("choice: ").lower().strip()
+
+                if pass_choice== "ip":
+                    password = input("Enter your password\n")
+                elif pass_choice== "gp":
+                    password = Credentials.generate_password(8)
+                else:
+                        print("Invalid. kindly use short codes")
+
+
+
+            # elif shortcode == "ex":
+            #     print("Goodbye")
 
 
 
