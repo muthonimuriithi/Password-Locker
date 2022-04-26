@@ -24,6 +24,13 @@ def create_credentials(account_name, user_name, user_password):
 def s_credentials(credentials):
     credentials.save_credentials()
 
+def del_credentials(credentials):
+        credentials.delete_credentials()
+
+def disp_credentials():
+            Credentials.display_credentials()
+
+
 
 def main():
     pass
