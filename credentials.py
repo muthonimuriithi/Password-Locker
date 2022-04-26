@@ -7,10 +7,9 @@ class Credentials:
 
 credentials_list = [] #creates an empty list for user credentials
 
-def __init__(self, account_name, first_name, last_name, user_password):
+def __init__(self, account_name, user_name, user_password):
         self.account_name = account_name
-        self.first_name = first_name
-        self.last_name = last_name
+        self.user_name = user_name
         self.user_password = user_password
 
 def save_credential(self):

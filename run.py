@@ -5,16 +5,24 @@ from credentials import Credentials
 
 #user
 
-def create_user(username, password):
-    new_user = User(username, password)
+def create_user(user_name, user_password):
+    new_user = User(user_name, user_password)
     return new_user
 
 def sv_user(user):
-    user.sv_user()
+    user.save_user()
 
 def del_user(user):
-        user.del_user()
+        user.delete_user()
 
+        #objects in credentials classmethod
+
+def create_credentials(account_name, user_name, user_password):
+    new_credentials = Credentials(account_name, user_name, user_password)
+    return new_credentials
+
+def s_credentials(credentials):
+    credentials.save_credentials()
 
 
 def main():
