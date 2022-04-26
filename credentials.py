@@ -1,3 +1,5 @@
+from random import randint
+
 class Credentials:
      '''
     class that creates instances of users accounts credentials
@@ -30,3 +32,16 @@ def display_credentials(cls):
         Method that displays the credentials list
         '''
         return cls.credentials_list
+
+@classmethod
+def search_credentials(cls, account_name):
+    for credential in cls.credentials_list:
+        if credential.account_name == account_name:
+            return credential
+
+def genpassword(ln):
+    chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!#-$*/=?@"
+    password =" "
+    for i in range(ln):
+        password += chars[randint(0, len(chars)-1)]
+        return password
