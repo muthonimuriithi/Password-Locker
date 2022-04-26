@@ -25,15 +25,28 @@ def s_credentials(credentials):
     credentials.save_credentials()
 
 def del_credentials(credentials):
-        credentials.delete_credentials()
+    credentials.delete_credentials()
 
 def disp_credentials():
-            Credentials.display_credentials()
+     Credentials.display_credentials()
+
+def search_creds(name):
+    Credentials.search_credentials(name)
 
 
 
 def main():
-    pass
+    print("Hey there! Welcome to password locker")
+
+    while True:
+        '''
+        cc - create acc
+        li - login
+        ex - exit
+        '''
+        print("Use the short codes:/ncc - create acc, /nli - login,/n ex- exit")
+        shortcode = input().lower().strip()
+
 
 if __name__ == '__main__':
     main()
