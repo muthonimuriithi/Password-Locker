@@ -39,13 +39,33 @@ def main():
     print("Hey there! Welcome to password locker")
 
     while True:
+
         '''
-        cc - create acc
+        cc - create account
         li - login
         ex - exit
         '''
-        print("Use the short codes:/ncc - create acc, /nli - login,/n ex- exit")
+        print("Use the short codes to enter your options:\ncc - create account, \nli - login,\n ex- exit")
         shortcode = input().lower().strip()
+        if shortcode == "cc":
+            print("Enter the user details")
+            print("-"*10)
+            user_name = input("user_name: ")
+
+            while True:
+                print("Enter ip-to input password\n gp- to generate password ")
+                pass_choice = input("choice: ").lower().strip()
+
+                if pass_choice== "ip":
+                    password = input("Enter your password\n")
+                elif pass_choice== "gp":
+                    password = Credentials.genpassword(8)
+                else:
+                        print("Invalid. kindly use short codes")
+
+
+
+
 
 
 if __name__ == '__main__':
