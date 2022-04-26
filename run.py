@@ -59,9 +59,11 @@ def main():
                 if pass_choice== "ip":
                     password = input("Enter your password\n")
                 elif pass_choice== "gp":
-                    password = Credentials.genpassword(8)
+                    password = Credentials.generate_password(8)
                 else:
                         print("Invalid. kindly use short codes")
+
+
 
 
 
