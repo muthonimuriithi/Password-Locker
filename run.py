@@ -38,16 +38,11 @@ def login(name,password):
 
 
 def main():
-        print("Hey there! Welcome to password locker")
+        print("Hey there! Welcome to password . What is your name? ")
+        user_name = input("Name:")
 
         while True:
-
-            '''
-            cc - create account
-            li - login
-            ex - exit
-            '''
-            ("Use the short codes to enter your options:\ncc - create account, \nli - login,\n ex- exit")
+            print(f"Hey {user_name} ,Use these short codes to enter your options:\ncc - create account, \nli - login,\n ex- exit")
             shortcode = input().lower().strip()
             if shortcode == "cc":
                 print("Enter the user details")
@@ -120,13 +115,7 @@ def main():
 
             # elif shortcode == "ex":
             #     print("Goodbye")
-
-
-
-
-
-
-
-
+            
 if __name__ == '__main__':
+    
     main()
