@@ -13,25 +13,30 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("loise","muthoni","loimuthons","12345") 
+        self.new_user = User("loise","poise") 
+        self.new_user2 = User("rose","pin") 
 
 
     def test_init(self):
         '''
         test_init test case to test if the object is initialized properly
         '''
-        self.assertEqual(self.new_user.first_name,"loise")
-        self.assertEqual(self.new_user.last_name,"muthoni")
-        self.assertEqual(self.new_user.user_name,"loismuthons")
-        self.assertEqual(self.new_user.password,"12345")
+        self.assertEqual(self.new_user.user_name,"loise")
+        self.assertEqual(self.new_user.user_password,"poise")
 
+    def tearDown(self):
+            '''
+            tearDown method that does clean up after each test case has run.
+            '''
+            User.users_list = []
+        
     def test_save_user(self):
         '''
         test_save_user test case to test if the user object is saved into
          the user list
         '''
         self.new_user.save_user() 
-        self.assertEqual(len(User.user_list),1)
+        self.assertEqual(len(User.users_list),1)
 
     
 
@@ -41,38 +46,26 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("loise","muthoni","loismuthons","12345") 
-            test_user.save_user()
-            self.assertEqual(len(User.user_list),2)
+            self.new_user2.save_user()
+            
+            self.assertEqual(len(User.users_list),2)
 
     
-    def tearDown(self):
-            '''
-            tearDown method that does clean up after each test case has run.
-            '''
-            User.user_list = []
+    
 
 
-    def test_save_multiple_user(self):
-            '''
-            test_save_multiple_user to check if we can save multiple user
-            objects to our user_list
-            '''
-            self.new_user.save_user()
-            test_user = User("loise","muthoni","loismuthons","12345") 
-            test_user.save_user()
-            self.assertEqual(len(User.user_list),2)
+    
     
     def test_delete_user(self):
             '''
             test_delete_user to test if we can remove a user from our user list
             '''
             self.new_user.save_user()
-            test_user = User("loise","muthoni","loismuthons","12345") 
-            test_user.save_user()
+            self.new_user2.save_user()
+            
 
             self.new_user.delete_user()
-            self.assertEqual(len(User.user_list),1)
+            self.assertEqual(len(User.users_list),1)
 
 
     def test_find_user_by_user_name(self):
@@ -81,12 +74,11 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("loise","muthoni","loismuthons","12345") 
-        test_user.save_user()
+        
 
-        found_user = User.find_by_user_name("loismuthons")
+        found_user = User.find_by_user_name("loise")
 
-        self.assertEqual(found_user.user_name,test_user.user_name)
+        self.assertEqual(found_user.user_name,self.new_user.user_name)
 
     def test_user_exists(self):
         '''
@@ -94,10 +86,9 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("loise","muthoni","loismuthons","12345") 
-        test_user.save_user()
+       
 
-        user_exists = User.user_exist("loismuthons")
+        user_exists = User.user_exist("loise")
 
         self.assertTrue(user_exists)
 if __name__ == '__main__':

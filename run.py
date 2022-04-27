@@ -50,17 +50,24 @@ def main():
                 user_name = input("username: ")
 
                 while True:
-                    print("Enter: ip-to input password\n  gp- to generate password ")
-                    pass_choice = input("choice: ").lower().strip()
+                    # print("Enter: ip-to input password\n  gp- to generate password ")
+                    # pass_choice = input("choice: ").lower().strip()
 
-                    if pass_choice== "ip":
-                        password = input("Enter your password\n")
-                    elif pass_choice== "gp":
-                        password = Credentials.generate_password(8)
-                    else:
-                            print("Invalid. kindly use short codes")
+                    # if pass_choice== "ip":
+                    #     password = input("Enter your password\n")
+                    # elif pass_choice== "gp":
+                    #     password = Credentials.generate_password(8)
+                    # else:
+                    #         print("Invalid. kindly use short codes")
 
-                            sv_user(create_user(user_name, user_password))
+                        print("\nEnter a password")
+                        print("*"*20)
+                        password = input()
+
+                        sv_user(create_user(user_name, user_password))
+
+                        print("\n")
+                        print(f"New Account **{user_name}** created.\n")
 
             elif shortcode == "li":
                 print("Enter your login details")
@@ -117,5 +124,5 @@ def main():
             #     print("Goodbye")
             
 if __name__ == '__main__':
-    
+
     main()
