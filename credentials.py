@@ -13,13 +13,13 @@ def __init__(self, account_name, user_name, user_password):
         self.user_name = user_name
         self.user_password = user_password
 
-def save_credential(self):
+def save_credentials(self):
         '''
         Method to save a new object in the credential list
         '''
         Credentials.credentials_list.append(self)
 
-def delete_credentials(self):
+def delete_credential(self):
         '''
         Method to remove a credential from the credential list
         '''
@@ -36,11 +36,11 @@ def display_credentials(cls):
 @classmethod
 def verify_user(cls, user_name, user_password):
     active_user = " "
-    for user in User.users_list:
+    for user in cls.users_list:
         if(user.username == user_name and user.password == user_password):
             active_user = user.username
 
-            return cls.active_user
+            return active_user
 
 
 @classmethod
