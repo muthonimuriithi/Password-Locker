@@ -22,7 +22,7 @@ class TestUser(unittest.TestCase):
         '''
         self.assertEqual(self.new_user.first_name,"loise")
         self.assertEqual(self.new_user.last_name,"muthoni")
-        self.assertEqual(self.new_user.user_name,"loimuthons")
+        self.assertEqual(self.new_user.user_name,"loismuthons")
         self.assertEqual(self.new_user.password,"12345")
 
     def test_save_user(self):
@@ -41,7 +41,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("yvette","umutesiwase","umutesiwaseyvette","yvette") 
+            test_user = User("loise","muthoni","loismuthons","12345") 
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
 
@@ -59,7 +59,7 @@ class TestUser(unittest.TestCase):
             objects to our user_list
             '''
             self.new_user.save_user()
-            test_user = User("yvette","umutesiwase","umutesiwaseyvette","yvette") 
+            test_user = User("loise","muthoni","loismuthons","12345") 
             test_user.save_user()
             self.assertEqual(len(User.user_list),2)
     
@@ -68,7 +68,7 @@ class TestUser(unittest.TestCase):
             test_delete_user to test if we can remove a user from our user list
             '''
             self.new_user.save_user()
-            test_user = User("yvette","umutesiwase","umutesiwaseyvette","yvette") 
+            test_user = User("loise","muthoni","loismuthons","12345") 
             test_user.save_user()
 
             self.new_user.delete_user()
@@ -81,10 +81,10 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("yvette","umutesiwase","umutesiwaseyvette","yvette") 
+        test_user = User("loise","muthoni","loismuthons","12345") 
         test_user.save_user()
 
-        found_user = User.find_by_user_name("umutesiwaseyvette")
+        found_user = User.find_by_user_name("loismuthons")
 
         self.assertEqual(found_user.user_name,test_user.user_name)
 
@@ -94,10 +94,10 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        test_user = User("yvette","umutesiwase","umutesiwaseyvette","yvette") 
+        test_user = User("loise","muthoni","loismuthons","12345") 
         test_user.save_user()
 
-        user_exists = User.user_exist("umutesiwaseyvette")
+        user_exists = User.user_exist("loismuthons")
 
         self.assertTrue(user_exists)
 if __name__ == '__main__':
