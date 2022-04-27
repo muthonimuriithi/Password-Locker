@@ -36,11 +36,11 @@ class Credentials:
                 @classmethod
                 def verify_user(cls, user_name, user_password):
                     active_user = " "
-                for user in cls.users_list:
-                    if(user.username == user_name and user.password == user_password):
-                        active_user = user.username
-
-                        return active_user
+                    for user in cls.users_list:
+                        if(user.username == user_name and user.password == user_password):
+                            active_user = user.username
+                    return active_user
+                        
 
 
                 @classmethod
