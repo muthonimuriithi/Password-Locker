@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.8
+import os
 from user import User
 from credentials import Credentials
 
@@ -16,113 +17,96 @@ def del_user(user):
 
         #objects in credentials classmethod
 
-def create_credentials(account_name, user_name, user_password):
-    new_credentials = Credentials(account_name, user_name, user_password)
+def create_credentials(account_name, user_name, user_password=None):
+    if user_password is not None:
+        new_credentials = Credentials(account_name, user_name, user_password)
+    else:
+        password=Credentials.genPassword()
+        new_credentials = Credentials(account_name, user_name, password)
     return new_credentials
 
 def s_credentials(credentials):
     credentials.save_credentials()
 
-def del_credentials(credentials):
-    credentials.delete_credentials()
+def del_credentials(account_name):
+    credential= Credentials.search_credentials(account_name)
+
+    credential.delete_credential()
 
 def disp_credentials():
-    return Credentials.display_credentials()
+    credentials= Credentials.display_credentials()
+    for credential in credentials:
+        print(credential.account_name)
+        print(credential.user_name)
+        print(credential.user_password)
 
 def search_creds(name):
     Credentials.search_credentials(name)
 
 def login(name,password):
-    return Credentials.verify_user(name,password)
+    return User.verify_user(name,password)
+    
 
+def show_codes():
+    print(f"Please,Use these short codes to navigate the app:\ncc - create account, \nsc - show accounts,\ndc- delete account\n ex- exit")
+    shortcode = input("Enter shortcode: ").lower().strip()
+    return shortcode
 
 
 def main():
-        print("Hey there! Welcome to password . What is your name? ")
-        user_name = input("Name:")
+        os.system("clear")
+        print("Hey there! Welcome to password locker.")
+        user_name = input("What is your username? ")
+        user_password = input("Enter password: ")
+        new_user=create_user(user_name, user_password)
+        sv_user(new_user)
+        print("You have been registered successfully. Please login.")
+        login_username = input("Enter username: ")
+        login_password = input("Enter password: ")
+        login(login_username, login_password)
+        print("Login successful.\n")
+        os.system("clear")
+        
 
         while True:
-            print(f"Hey {user_name} ,Use these short codes to enter your options:\ncc - create account, \nli - login,\n ex- exit")
-            shortcode = input().lower().strip()
+               
+
+            shortcode = show_codes()
             if shortcode == "cc":
-                print("Enter the user details")
-                print("-"*10)
-                user_name = input("username: ")
+                account_name = input("Enter account name: ")
+                account_username = input("Enter your username: ")
+                pass_choice = input("Auto generate password? [y/N] ").lower().strip()
 
-                while True:
-                    # print("Enter: ip-to input password\n  gp- to generate password ")
-                    # pass_choice = input("choice: ").lower().strip()
+                if pass_choice == "n":
+                    s_credentials( create_credentials(account_name, account_username))
 
-                    # if pass_choice== "ip":
-                    #     password = input("Enter your password\n")
-                    # elif pass_choice== "gp":
-                    #     password = Credentials.generate_password(8)
-                    # else:
-                    #         print("Invalid. kindly use short codes")
+                else :
 
-                        print("\nEnter a password")
-                        print("*"*20)
-                        password = input()
-
-                        sv_user(create_user(user_name, user_password))
-
-                        print("\n")
-                        print(f"New Account **{user_name}** created.\n")
-
-            elif shortcode == "li":
-                print("Enter your login details")
-                user_name = input("user-name: ")
-                user_password = input("Password: ")
-
-                user_exist = login(user_name, user_password)
-
-                if user_exist == user_name:
+                    password = input("Enter your password: ")
+                    s_credentials( create_credentials(account_name, account_username, password ))
                     
-                    print("Welcome {user_name}")
 
-                while True:
-                    print("Use these short codes to navigate : cc- create new account dc- display credentials f- find credentials ex- exit")
-
-                    shortcode = input().lower().strip()
-                    if shortcode == "cc":
-                        print("Enter details to create new account")
-                        a_name = input("Account Name: ")
-                        u_name = input("Username: ")
-
-                        while True:
-                            print("Enter ip-to input password\n gp- to generate password ")
-                            pass_choice = input("choice: ").lower().strip()
-
-                    if pass_choice== "ip":
-                        password = input("Enter your password\n")
-                    elif pass_choice== "gp":
-                        password = Credentials.genPassword(8)
-                    else:
-                            print("Invalid. kindly use short codes")
-
-                    s_credentials(create_credentials(a_name,u_name,password))
-                    print(f"{a_name} account of username {u_name} and password")
+            elif shortcode == "sc":
+                disp_credentials()
+                    
 
             elif shortcode == "dc":
-                        if disp_credentials():
-                            print(f"Account{Credentials.account_name} -- {Credentials.username} -- password{password}")
+                account_name = input ("Enter account name to delete: ")
+                del_credentials(account_name)
+        
 
-            else: 
-                print("There are no saved credentials yet")
+            elif shortcode == "ex":
+                print("Goodbye")
+                                 
 
-                # elif shortcode == "ex":
-                #     print("Goodbye")
-                #              break
-
-                # else:print("I did not get that. Please enter the short codes")
+            else:print("I did not get that. Please enter the short codes")
 
 
 
 
 
-            # elif shortcode == "ex":
-            #     print("Goodbye")
-            
+              
+        
 if __name__ == '__main__':
 
     main()
