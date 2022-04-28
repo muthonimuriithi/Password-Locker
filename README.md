@@ -13,12 +13,14 @@
 + [Authors Info](#author-Info)
 
 ## Description
+
 Password locker is a python application that runs on the terminal which allows users to save their passwords and credentials for different sites.
+
 
 ## Installation
  Navigate into the folder you want the application to be In your terminal, run the commands
 
-* git clone:  
+* git clone:  https://github.com/muthonimuriithi/Password-Locker.git
 
 * cd into the folder
 
@@ -26,11 +28,11 @@ Password locker is a python application that runs on the terminal which allows u
 
 ### Requirements
 
+* python3 installed
+
 * Either a computer,phone,tablet or an Ipad
 
 * An access to the Internet
-
-### Installation Process
 
 
 ## Technology Used
