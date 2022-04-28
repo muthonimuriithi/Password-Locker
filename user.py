@@ -10,6 +10,13 @@ class User:
                 self.user_name = user_name
                 self.user_password = user_password
 
+        @classmethod
+        def verify_user(cls, user_name, user_password):
+                active_user = " "
+                for user in cls.users_list:
+                        if(user.user_name == user_name and user.user_password == user_password):
+                                active_user = user.user_name
+                                return active_user
         def save_user(self):
                 '''
                 This method saves new object to users list

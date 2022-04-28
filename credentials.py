@@ -23,7 +23,7 @@ class Credentials:
                     '''
                     Method to remove a credential from the credential list
                     '''
-                    Credentials.credentials_list.remove(self)
+                    self.credentials_list.remove(self)
 
 
                 @classmethod
@@ -33,13 +33,7 @@ class Credentials:
                     '''
                     return cls.credentials_list
 
-                @classmethod
-                def verify_user(cls, user_name, user_password):
-                    active_user = " "
-                    for user in cls.users_list:
-                        if(user.username == user_name and user.password == user_password):
-                            active_user = user.username
-                    return active_user
+                
                         
 
 
@@ -50,7 +44,7 @@ class Credentials:
                             return credential
 
 
-                def genPassword(ln):
+                def genPassword(ln=5):
                     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789!#-$*/=?@"
                     password =""
                     for i in range(ln):
